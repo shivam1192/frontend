@@ -11,7 +11,7 @@ class Homepage extends Component {
     for (let i = 0; i < flowers.length; i++) {
       row.push(
         <div style={{ display: "inline-block" }}>
-          <FlowerCard flower={flowers[i]}></FlowerCard>
+          <FlowerCard flower={flowers[i]} addToCart={this.props.addToCart}></FlowerCard>
         </div>
       );
     }

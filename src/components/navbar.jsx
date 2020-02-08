@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Link} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
@@ -20,7 +21,7 @@ const NavBar = () => {
     <>
       <div>
         <Navbar bg="dark" variant="dark">
-          <Navbar.Brand href="/home">Ferns & Petal</Navbar.Brand>
+          <Navbar.Brand ><Link to="/home">Ferns & Petal</Link></Navbar.Brand>
           <Nav className="mr-auto">
             <Form inline>
               <FormControl
@@ -32,9 +33,10 @@ const NavBar = () => {
             </Form>
           </Nav>
           <Nav className="justify-content-end">
+          <Nav.Link ><Link to="/cart">Cart</Link></Nav.Link>
            <FontAwesomeIcon icon={faCartPlus} size="2x" style={{color:"white", marginRight:"10"}}></FontAwesomeIcon>
-            <Nav.Link href="/login">Login</Nav.Link>
-            <Nav.Link href="/register">SignUp</Nav.Link>
+            <Nav.Link><Link to="/login">Login</Link></Nav.Link>
+            <Nav.Link><Link to="/register">SignUp</Link></Nav.Link>
             <FontAwesomeIcon icon={faUserCircle} size="2x" style={{color:"white", marginRight:"8"}}></FontAwesomeIcon>
 
           </Nav>

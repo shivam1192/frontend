@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import {Card, Button} from 'react-bootstrap';
 
-const FlowerCard = ({flower}) => {
-  console.log(flower);
+const FlowerCard = ({flower, addToCart}) => {
+  // console.log(flower);
   return (
       
 
@@ -11,7 +11,7 @@ const FlowerCard = ({flower}) => {
       <Card.Body>
         <Card.Title>{flower.name}<p>{flower.price} $</p></Card.Title>
         
-        <Button variant="primary">Add To Cart</Button>
+        <Button variant="primary" onClick={()=>addToCart(flower)}>Add To Cart</Button>
       </Card.Body>
     </Card>
      
