@@ -11,7 +11,7 @@ const TopCarousel = () => {
         <img
 
           className="image"
-          src="https://lh3.googleusercontent.com/proxy/1dkCaQgEECcUoqXBHcIHzrfS47LMUio9NFTu1MWMFaMJ6wPWNKJafON-QuVmGIOQQdY5QfZB2_2nv1Z-71_q650DRYXWPsi0nRuv0iH3Lg"
+          src="https://www.yourfates.com/wp-content/uploads/2019/11/night.jpg"
           alt="First slide"
         />
         <Carousel.Caption>

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
+import auth from './services/authService';
+import { ToastContainer } from 'react-toastify';
 import NavBar from "./components/navbar";
 import Login from "./components/login";
 import TopCarousel from "./components/carousel";
@@ -9,9 +11,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Homepage from "./components/homepage";
 import Register from './components/register';
+import 'react-toastify/dist/ReactToastify.css';
+import Logout from './components/logout';
 
 class App extends Component {
   state = {
+    user:"",
     flowers: [
       {
         name: "Orange Rose",
@@ -51,12 +56,24 @@ class App extends Component {
       tag: "valentine"
     }]
   };
+
+
+
   addToCart=(item)=>{
-    console.log("Added :",item);
-    let oldCart=this.state.cartItems;
-    let cartItems=[...oldCart,item];
-    console.log("Cart: ",cartItems);
-    this.setState({cartItems:cartItems});
+
+    if(this.state.user)
+    {
+      console.log("Added :",item);
+      let oldCart=this.state.cartItems;
+      let cartItems=[...oldCart,item];
+      console.log("Cart: ",cartItems);
+      this.setState({cartItems:cartItems});
+
+    }
+    else
+    {
+      window.location='/login'
+    }
   }
 
   deleteFromCart=(item)=>{
@@ -65,24 +82,43 @@ class App extends Component {
     this.setState({cartItems:cartItems});
     console.log("New Cart: ", cartItems);
   }
+  componentDidMount() {
+    const user= auth.getCurrentUser();
+
+    if(user)
+    {
+      console.log("currentuser:",user);
+      console.log(user);
+     this.setState({ user });
+
+    }
+    return;
+  }
+
 
 
 
   render() {
     return (
       <div className="App div">
-        <NavBar></NavBar>
+       <ToastContainer/>
+        <NavBar cartItems={this.state.cartItems.length} user={this.state.user} ></NavBar>
 
         <main className="container">
           <Switch>
             <Route path="/register" component={Register} />
             <Route path="/login" component={Login} />
+            <Route path="/logout" component={Logout} />
+
             <Route path="/cart" render={()=><Cart cartItems={this.state.cartItems} deleteFromCart={this.deleteFromCart}/>} />
             {/* <Route path="/logout" component={Logout} /> */}
             <Route
               path="/home"
               render={() => <Homepage flowers={this.state.flowers} addToCart={this.addToCart} />}
             />
+            <Redirect from="/" exact to="/home" />
+
+           
             {/* <Route path="/customers" component={Customers} />
             <Route path="/rentals" component={Rentals} />
             <Route path="/not-found" component={NotFound} />
