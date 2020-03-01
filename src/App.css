@@ -1,15 +1,9 @@
-.body{
-  /* background: url('https://image.shutterstock.com/z/stock-vector-light-purple-vector-cover-with-set-of-confections-glitter-abstract-sketch-with-sweets-candies-1013258626.jpg') */
-background: url('https://www.itl.cat/pngfile/big/35-357246_11920x1080p-flower-full-hd-wallpapers-flower-background-light.jpg')
-
-}
 
 .App {
   text-align: center;
   display: flex;
   flex-direction: column;
   background-color: lightgoldenrodyellow;
-  background: url('https://www.itl.cat/pngfile/big/35-357246_11920x1080p-flower-full-hd-wallpapers-flower-background-light.jpg')
 
 }
 .container{

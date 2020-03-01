@@ -1,34 +1,43 @@
 import React, { Component } from "react";
-import TopCarousel from "./carousel";
-import FlowerCard from "./card";
-class Homepage extends Component {
-  state = {};
+import blogPost from './blogPost';
+import BlogPost from "./blogPost";
+import show from '../services/blogService';
 
-  createRow = () => {
-    const flowers=this.props.flowers;
-    // console.log(flowers)
-    let row = [];
-    for (let i = 0; i < flowers.length; i++) {
-      row.push(
-        <div style={{ display: "inline-block" }}>
-          <FlowerCard flower={flowers[i]} addToCart={this.props.addToCart}></FlowerCard>
-        </div>
-      );
-    }
-    return <div> {row}</div>;
+class Homepage extends Component {
+  state = {
+    blogs:[
+      {
+        _id: "1",
+        title: "sfh",
+        content: "fkniefbhjefbfyuefbvuvfbeure"
+      },
+      {
+        _id: "2",
+
+        title: "sfwefefh",
+        content: "fkniefbhjefwfregtrh5 grbthb rbt4bfyuefbvuvfbeure"
+      },
+      {
+        _id: "3",
+
+        title: "sfweweweryh",
+        content: "fkniefgbgr  gfbtr  grbtr grbtr bbhjefbfyuefbvuvfbeure"
+      }
+    ]
   };
+ componentDidMount=()=>{
+   //populate the blog posts
+   console.log(show)
+ }
+ 
   render() {
     return (
       <>
-        <section>
-          <TopCarousel></TopCarousel>
-        </section>
-        <section>
-          <div style={{ display: "inline" }}>
-            {this.createRow()}
-            {this.createRow()}
-          </div>
-        </section>
+        {
+          this.state.blogs.map(post=>{
+            return <BlogPost post={post}></BlogPost>
+          })
+        }
       </>
     );
   }
